@@ -1,9 +1,0 @@
-2023-12-29 06:38:27,763 [INFO ]  Machine name: titan
-2023-12-29 06:38:27,763 [INFO ]  Arguments: 
-2023-12-29 06:38:27,763 [INFO ]  Namespace(appliance_name='kettle', model_arch='transformer', datadir='/home/lindo/Develop/nilm/ml/dataset_management/refit', save_dir='/home/lindo/Develop/nilm/ml/models', crop=None, evaluate=False, num_eval=432000, test_type='test', prune=False, quant_mode='w8', debug_model=True, fix_model=False, use_tpu=False)
-2023-12-29 06:38:27,763 [INFO ]  Savemodel file path: /home/lindo/Develop/nilm/ml/models/kettle/savemodel_transformer
-2023-12-29 06:38:29,501 [WARNI]  No training configuration found in save file, so the model was *not* compiled. Compile it manually.
-2023-12-29 06:38:29,508 [INFO ]  dataset: /home/lindo/Develop/nilm/ml/dataset_management/refit/kettle/kettle_test_H2.csv
-2023-12-29 06:38:30,402 [INFO ]  Loaded 5.734M samples from dataset.
-2023-12-29 06:38:30,407 [INFO ]  Converting model to tflite using w8 quantization.
-2023-12-29 06:38:30,408 [INFO ]  Debugging model...

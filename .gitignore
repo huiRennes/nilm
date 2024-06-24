@@ -1,23 +1,8 @@
-#/.vscode
-#*.log
-rpi/*.log
-*.tflite
-*.pb
-*.index
-variables.data*
-pruning_logs*
-#*.csv
-*.npy
-__pycache__
-/.venv
-*checkpoints*
-ml/linux_x86-64_benchmark_model
-ml/linux_aarch64_benchmark_model
-ml/quant_aware_train.py
-ml/train_keras.py
-
-# Ignore everything in directory transformer_model
-#*/transformer_model/*
-
-# Except...
-#!*/transformer_model/ELTransformer.py
+ml/.DS_Store
+ml/data/*
+venv/*
+.DS_Store
+ml/__pycache__/*
+ml/nilm_datasets/*
+ml/models/kettle/checkpoints_cnn/*
+ml/models_old/*

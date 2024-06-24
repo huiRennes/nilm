@@ -1,0 +1,60 @@
+2023-12-27 06:30:19,390 [INFO ]  *** Training model from scratch ***
+2023-12-27 06:30:19,390 [INFO ]  Machine name: titan
+2023-12-27 06:30:19,390 [INFO ]  Arguments: 
+2023-12-27 06:30:19,390 [INFO ]  Namespace(appliance_name='fridge', model_arch='transformer', datadir='./dataset_management/refit', save_dir='/home/lindo/Develop/nilm/ml/models', batchsize=512, n_epoch=50, crop_train_dataset=10000000, crop_val_dataset=None, do_not_use_distributed_training=False, resume_training=False, plot_display=True)
+2023-12-27 06:30:19,391 [INFO ]  Window length: 599
+2023-12-27 06:30:19,391 [INFO ]  Training dataset: ./dataset_management/refit/fridge/fridge_training_.csv
+2023-12-27 06:30:19,391 [INFO ]  Validation dataset: ./dataset_management/refit/fridge/fridge_validation_H12.csv
+2023-12-27 06:30:19,391 [INFO ]  Checkpoint file path: /home/lindo/Develop/nilm/ml/models/fridge/checkpoints_transformer
+2023-12-27 06:30:19,391 [INFO ]  SaveModel file path: /home/lindo/Develop/nilm/ml/models/fridge/savemodel_transformer
+2023-12-27 06:30:19,391 [INFO ]  Training history file path: /home/lindo/Develop/nilm/ml/models/fridge/history_transformer
+2023-12-27 06:30:21,960 [INFO ]  There are 10.000M training samples.
+2023-12-27 06:30:21,960 [INFO ]  There are 5.860M validation samples.
+2023-12-27 06:30:21,960 [INFO ]  Normalized on power threshold: 0.125
+2023-12-27 06:30:21,960 [INFO ]  L1 loss multiplier: 1e-06
+2023-12-27 06:30:21,960 [INFO ]  Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0', '/job:localhost/replica:0/task:0/device:GPU:1')
+2023-12-27 06:30:22,123 [INFO ]  Number of replicas: 2.
+2023-12-27 06:30:22,123 [INFO ]  Global batch size: 1024.
+2023-12-27 06:30:22,503 [INFO ]  Learning rate: 0.0001
+2023-12-27 06:30:24,175 [INFO ]  Collective all_reduce tensors: 46 all_reduces, num_devices = 2, group_size = 2, implementation = CommunicationImplementation.NCCL, num_packs = 1
+2023-12-27 06:30:25,648 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:26,571 [INFO ]  Collective all_reduce tensors: 46 all_reduces, num_devices = 2, group_size = 2, implementation = CommunicationImplementation.NCCL, num_packs = 1
+2023-12-27 06:30:26,864 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,334 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,338 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,342 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,343 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,568 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,569 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,570 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 06:30:33,571 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2023-12-27 07:06:44,850 [INFO ]  Running test loop after epoch: 1.
+2023-12-27 07:16:05,469 [INFO ]  Current val loss of 3.382 < than val loss of inf, saving model to /home/lindo/Develop/nilm/ml/models/fridge/savemodel_transformer.
+2023-12-27 07:16:07,562 [INFO ]  Assets written to: /home/lindo/Develop/nilm/ml/models/fridge/savemodel_transformer/assets
+2023-12-27 07:16:07,609 [INFO ]  epoch: 1 loss: 3.023 mse: 0.007244 mae: 0.05877 val_loss: 3.382 val_mse: 0.008465 val_mae: 0.07254
+2023-12-27 07:16:07,749 [INFO ]  Reshuffling training dataset.
+2023-12-27 07:52:24,089 [INFO ]  Running test loop after epoch: 2.
+2023-12-27 08:01:44,808 [INFO ]  Current val loss of 3.141 < than val loss of 3.382, saving model to /home/lindo/Develop/nilm/ml/models/fridge/savemodel_transformer.
+2023-12-27 08:01:46,827 [INFO ]  Assets written to: /home/lindo/Develop/nilm/ml/models/fridge/savemodel_transformer/assets
+2023-12-27 08:01:46,875 [INFO ]  epoch: 2 loss: 1.973 mse: 0.004755 mae: 0.04188 val_loss: 3.141 val_mse: 0.008094 val_mae: 0.07134
+2023-12-27 08:01:47,239 [INFO ]  Reshuffling training dataset.
+2023-12-27 08:38:04,409 [INFO ]  Running test loop after epoch: 3.
+2023-12-27 08:47:24,584 [INFO ]  epoch: 3 loss: 1.694 mse: 0.004101 mae: 0.03729 val_loss: 4.685 val_mse: 0.01084 val_mae: 0.0884
+2023-12-27 08:47:24,823 [INFO ]  Reshuffling training dataset.
+2023-12-27 09:23:44,705 [INFO ]  Running test loop after epoch: 4.
+2023-12-27 09:33:04,889 [INFO ]  epoch: 4 loss: 1.503 mse: 0.003657 mae: 0.034 val_loss: 3.385 val_mse: 0.009055 val_mae: 0.07565
+2023-12-27 09:33:05,177 [INFO ]  Reshuffling training dataset.
+2023-12-27 10:09:22,688 [INFO ]  Running test loop after epoch: 5.
+2023-12-27 10:18:43,501 [INFO ]  epoch: 5 loss: 1.343 mse: 0.003278 mae: 0.03118 val_loss: 3.655 val_mse: 0.009519 val_mae: 0.07605
+2023-12-27 10:18:43,843 [INFO ]  Reshuffling training dataset.
+2023-12-27 10:55:00,647 [INFO ]  Running test loop after epoch: 6.
+2023-12-27 11:04:21,116 [INFO ]  epoch: 6 loss: 1.196 mse: 0.00295 mae: 0.02869 val_loss: 3.7 val_mse: 0.009618 val_mae: 0.07584
+2023-12-27 11:04:21,535 [INFO ]  Reshuffling training dataset.
+2023-12-27 11:40:39,816 [INFO ]  Running test loop after epoch: 7.
+2023-12-27 11:50:01,823 [INFO ]  epoch: 7 loss: 1.052 mse: 0.002633 mae: 0.02629 val_loss: 4.471 val_mse: 0.01161 val_mae: 0.08368
+2023-12-27 11:50:02,284 [INFO ]  Reshuffling training dataset.
+2023-12-27 12:26:23,373 [INFO ]  Running test loop after epoch: 8.
+2023-12-27 12:35:44,017 [INFO ]  epoch: 8 loss: 0.9123 mse: 0.002337 mae: 0.02398 val_loss: 3.643 val_mse: 0.009543 val_mae: 0.06843
+2023-12-27 12:35:44,532 [INFO ]  Early termination of training.
+2023-12-27 12:35:45,014 [INFO ]  Plot directory: /home/lindo/Develop/nilm/ml/models/fridge/train_transformer_loss
+2023-12-27 14:26:56,676 [INFO ]  Plot directory: /home/lindo/Develop/nilm/ml/models/fridge/train_transformer_mae

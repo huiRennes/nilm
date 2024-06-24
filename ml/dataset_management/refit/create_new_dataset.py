@@ -16,12 +16,15 @@ import pandas as pd
 
 DATA_DIRECTORY = '/home/lindo/Develop/nilm-datasets/REFIT/CLEAN_REFIT_081116/'
 SAVE_DIRECTORY = '/home/lindo/Develop/nilm/ml/dataset_management/refit'
+
+DATA_DIRECTORY = '/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/nilm_datasets/refit/'
+SAVE_DIRECTORY = '/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit'
 def get_arguments():
     parser = argparse.ArgumentParser(description='create new datasets for training')
     parser.add_argument('--data_dir', type=str, default=DATA_DIRECTORY,
                           help='The directory containing the CLEAN REFIT data')
-    parser.add_argument('--appliance_name', type=str, default='kettle',
-                          help='which appliance you want to train: kettle,\
+    parser.add_argument('--appliance_name', type=str, default='washingmachine',
+                          help='which appliance you want to train: washingmachine,\
                           microwave,fridge,dishwasher,washingmachine')
     parser.add_argument('--save_path', type=str, default=SAVE_DIRECTORY,
                           help='The directory to store the training data')
@@ -97,7 +100,7 @@ params_appliance = {
 
 def load(path, building, appliance, channel):
     # load csv
-    file_name = path + 'CLEAN_House' + str(building) + '.csv'
+    file_name = path + 'House_' + str(building) + '.csv'
     single_csv = pd.read_csv(file_name,
                              header=0,
                              names=['aggregate', appliance],
@@ -138,7 +141,7 @@ def main():
     print("Creating datasets...")
     # Looking for proper files
     for _, filename in enumerate(os.listdir(path)):
-        if filename == 'CLEAN_House' + str(params_appliance[appliance_name]['test_house']) + '.csv':
+        if filename == 'House_' + str(params_appliance[appliance_name]['test_house']) + '.csv':
             print('File: ' + filename + ' test set')
             # Loading
             test = load(path,
@@ -170,7 +173,7 @@ def main():
                   .format(test.shape[0] / 10 ** 6, params_appliance[appliance_name]['test_house']))
             del test
     
-        elif filename == 'CLEAN_House' + str(params_appliance[appliance_name]['validation_house']) + '.csv':
+        elif filename == 'House_' + str(params_appliance[appliance_name]['validation_house']) + '.csv':
             print('File: ' + filename + ' validation set')
             # Loading
             val = load(path,
@@ -234,7 +237,7 @@ def main():
                 rows, _ = csv.shape
                 total_length += rows
     
-                if filename == 'CLEAN_House' + str(params_appliance[appliance_name]['test_on_train_house']) + '.csv':
+                if filename == 'House_' + str(params_appliance[appliance_name]['test_on_train_house']) + '.csv':
                     fname = os.path.join(
                         save_path,
                         f'{appliance_name}_test_on_train_H{params_appliance[appliance_name]["test_on_train_house"]}.csv')

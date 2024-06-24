@@ -11,7 +11,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-sys.path.append('../../../ml')
 import common
 
 def load(file_name, crop=None):
@@ -38,8 +37,8 @@ def get_zscore(value, values):
     return np.abs(z_score)
 
 if __name__ == '__main__':
-    default_appliance = 'kettle'
-    default_dataset_dir = '/home/lindo/Develop/nilm/ml/dataset_management/refit/'
+    default_appliance = 'washingmachine'
+    default_dataset_dir = '/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit/'
 
     parser = argparse.ArgumentParser(
         description='scale a dataset'

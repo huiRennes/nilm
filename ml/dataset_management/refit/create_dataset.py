@@ -4,8 +4,8 @@ import os
 import re
 import argparse
 
-DATA_DIRECTORY = '/home/lindo/Develop/nilm-datasets/REFIT/CLEAN_REFIT_081116/'
-SAVE_PATH = 'kettle/'
+DATA_DIRECTORY = '/Users/hui/Local documents/co-found/dvp/NILM_model/nilm/ml/nilm_datasets/refit/'
+SAVE_PATH = '/Users/hui/Local documents/co-found/dvp/NILM_model/nilm/ml/nilm_datasets/refit/kettle/'
 AGG_MEAN = 522
 AGG_STD = 814
 def get_arguments():

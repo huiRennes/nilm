@@ -78,6 +78,7 @@ class DistributedTrainer():
         Raises:
             SystemExit if unknown model architecture or invalid batch size is specified.
         """
+        tf.config.optimizer.set_experimental_options({'disable_meta_optimizer': True})
         self._window_length = window_length
         self._logger = logger
         self._wait_for_better_loss = 0 # keeps track of val runs for patience limit
@@ -127,7 +128,7 @@ class DistributedTrainer():
 
         # Determine learning rate based on global batch size.
         try:
-            lr = self._LR_BY_BATCH_SIZE[self._global_batch_size]
+            lr = float(self._LR_BY_BATCH_SIZE[self._global_batch_size])
             self._logger.log(f'Learning rate: {lr}')
         except KeyError as e:
             self._logger.log('Learning rate cannot be determined due to invalid batch size.')
@@ -401,7 +402,7 @@ class DistributedTrainer():
             self._logger.log(
                 f'Current val loss of {test_loss:.4g} < '
                 f'than val loss of {self._best_test_loss:.4g}, '
-                f'saving model to {savemodel_filepath}.'
+                f'saving model to {savemodel_filepath}.h5'
             )
             self._model.save(savemodel_filepath)
             self._best_test_loss = test_loss #pylint: disable=attribute-defined-outside-init

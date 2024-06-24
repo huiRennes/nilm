@@ -3,11 +3,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import time
 import argparse
-from functions import load_dataframe
+#from functions import load_dataframe
 
 
-DATA_DIRECTORY = '../../data/refit/UKDALE/'
-SAVE_PATH = 'kettle/'
+def load_dataframe(directory, building, channel, col_names=['time', 'data'], nrows=None):
+    df = pd.read_table(directory + 'house_' + str(building) + '/' + 'channel_' +
+                       str(channel) + '.dat',
+                       sep="\s+",
+                       nrows=nrows,
+                       usecols=[0, 1],
+                       names=col_names,
+                       dtype={'time': str},
+                       )
+    return df
+
+
+DATA_DIRECTORY = '/Users/hui/Local documents/co-found/dvp/NILM_model/nilm/ml/data/refit/UKDALE/'
+SAVE_PATH = '/Users/hui/Local documents/co-found/dvp/NILM_model/nilm/ml/data/refit/UKDALE/kettle/'
 AGG_MEAN = 522
 AGG_STD = 814
 
@@ -114,11 +126,12 @@ def main():
             print("    Size of test set is {:.4f} M rows.".format(len(df_align) / 10 ** 6))
             continue
 
-        train = train.append(df_align, ignore_index=True)
+        #train = train.append(df_align, ignore_index=True)
+        train = pd.concat([train, df_align], ignore_index=True)
         del df_align
 
     # Crop dataset
-    if training_building_percent is not 0:
+    if training_building_percent !=  0:
         train.drop(train.index[-int((len(train)/100)*training_building_percent):], inplace=True)
 
 

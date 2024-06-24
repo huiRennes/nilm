@@ -1,0 +1,55 @@
+2024-05-17 07:32:38,919 [INFO ]  Machine name: titan
+2024-05-17 07:32:38,919 [INFO ]  Arguments: 
+2024-05-17 07:32:38,919 [INFO ]  Namespace(appliance_name='fridge', model_arch='cnn', datadir='./dataset_management/my-house', save_dir='/home/lindo/Develop/nilm/ml/models', batchsize=512, n_epoch=50, crop_train_dataset=None, crop_val_dataset=None, plot_display=True)
+2024-05-17 07:32:38,919 [INFO ]  Window length: 599
+2024-05-17 07:32:38,919 [INFO ]  Training dataset: ./dataset_management/my-house/fridge/fridge_training_house.csv
+2024-05-17 07:32:38,919 [INFO ]  Validation dataset: ./dataset_management/my-house/fridge/fridge_validation_house.csv
+2024-05-17 07:32:38,919 [INFO ]  Restoring model from: /home/lindo/Develop/nilm/ml/models/fridge/savemodel_cnn
+2024-05-17 07:32:38,919 [INFO ]  Checkpoint file path: /home/lindo/Develop/nilm/ml/models/fridge/checkpoints_cnn_fine_tune
+2024-05-17 07:32:38,919 [INFO ]  SaveModel file path: /home/lindo/Develop/nilm/ml/models/fridge/savemodel_cnn_fine_tune
+2024-05-17 07:32:38,919 [INFO ]  Training history file path: /home/lindo/Develop/nilm/ml/models/fridge/history_cnn_fine_tune
+2024-05-17 07:32:39,085 [INFO ]  There are 0.656M training samples.
+2024-05-17 07:32:39,085 [INFO ]  There are 0.164M validation samples.
+2024-05-17 07:32:39,085 [INFO ]  Normalized on power threshold: 0.125
+2024-05-17 07:32:39,085 [INFO ]  L1 loss multiplier: 1e-06
+2024-05-17 07:32:39,086 [INFO ]  Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0', '/job:localhost/replica:0/task:0/device:GPU:1')
+2024-05-17 07:32:39,364 [INFO ]  Number of replicas: 2.
+2024-05-17 07:32:39,364 [INFO ]  Global batch size: 1024.
+2024-05-17 07:32:39,417 [INFO ]  Learning rate: 0.0001
+2024-05-17 07:32:39,792 [WARNI]  No training configuration found in save file, so the model was *not* compiled. Compile it manually.
+2024-05-17 07:32:48,567 [INFO ]  Collective all_reduce tensors: 6 all_reduces, num_devices = 2, group_size = 2, implementation = CommunicationImplementation.NCCL, num_packs = 1
+2024-05-17 07:32:50,184 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:51,043 [INFO ]  Collective all_reduce tensors: 6 all_reduces, num_devices = 2, group_size = 2, implementation = CommunicationImplementation.NCCL, num_packs = 1
+2024-05-17 07:32:51,177 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,554 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,557 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,559 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,559 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,580 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,581 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,583 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:32:54,584 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+2024-05-17 07:33:09,559 [INFO ]  Running test loop after epoch: 1.
+2024-05-17 07:33:11,934 [INFO ]  Current val loss of 2.138 < than val loss of inf, saving model to /home/lindo/Develop/nilm/ml/models/fridge/savemodel_cnn_fine_tune.
+2024-05-17 07:33:11,934 [WARNI]  Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+2024-05-17 07:33:13,150 [INFO ]  Assets written to: /home/lindo/Develop/nilm/ml/models/fridge/savemodel_cnn_fine_tune/assets
+2024-05-17 07:33:13,165 [INFO ]  epoch: 1 loss: 1.299 mse: 0.005953 mae: 0.05165 val_loss: 2.138 val_mse: 0.009227 val_mae: 0.06407
+2024-05-17 07:33:13,419 [INFO ]  Reshuffling training dataset.
+2024-05-17 07:33:28,523 [INFO ]  Running test loop after epoch: 2.
+2024-05-17 07:33:29,979 [INFO ]  epoch: 2 loss: 0.1925 mse: 0.002119 mae: 0.02803 val_loss: 2.283 val_mse: 0.009292 val_mae: 0.06284
+2024-05-17 07:33:30,253 [INFO ]  Reshuffling training dataset.
+2024-05-17 07:33:45,411 [INFO ]  Running test loop after epoch: 3.
+2024-05-17 07:33:46,882 [INFO ]  epoch: 3 loss: 0.09312 mse: 0.001444 mae: 0.02134 val_loss: 2.249 val_mse: 0.009308 val_mae: 0.05975
+2024-05-17 07:33:47,180 [INFO ]  Reshuffling training dataset.
+2024-05-17 07:34:02,018 [INFO ]  Running test loop after epoch: 4.
+2024-05-17 07:34:03,494 [INFO ]  epoch: 4 loss: 0.06928 mse: 0.001168 mae: 0.01798 val_loss: 2.265 val_mse: 0.009208 val_mae: 0.05772
+2024-05-17 07:34:03,786 [INFO ]  Reshuffling training dataset.
+2024-05-17 07:34:18,797 [INFO ]  Running test loop after epoch: 5.
+2024-05-17 07:34:20,256 [INFO ]  epoch: 5 loss: 0.05944 mse: 0.0009956 mae: 0.01579 val_loss: 2.214 val_mse: 0.009002 val_mae: 0.05531
+2024-05-17 07:34:20,548 [INFO ]  Reshuffling training dataset.
+2024-05-17 07:34:35,265 [INFO ]  Running test loop after epoch: 6.
+2024-05-17 07:34:36,665 [INFO ]  epoch: 6 loss: 0.05324 mse: 0.0008815 mae: 0.01433 val_loss: 2.185 val_mse: 0.009029 val_mae: 0.05466
+2024-05-17 07:34:36,964 [INFO ]  Reshuffling training dataset.
+2024-05-17 07:34:51,916 [INFO ]  Running test loop after epoch: 7.
+2024-05-17 07:34:53,350 [INFO ]  epoch: 7 loss: 0.04766 mse: 0.0007996 mae: 0.01324 val_loss: 2.255 val_mse: 0.008987 val_mae: 0.05424
+2024-05-17 07:34:53,645 [INFO ]  Early termination of training.

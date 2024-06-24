@@ -1,0 +1,5 @@
+pandas
+matplotlib
+tqdm
+#tensorflow
+#conda activate tf-metal

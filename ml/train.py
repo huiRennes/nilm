@@ -90,13 +90,13 @@ def get_arguments():
     parser.add_argument(
         '--datadir',
         type=str,
-        default='./dataset_management/refit',
+        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit',
         help='Directory of the training samples.'
     )
     parser.add_argument(
         '--save_dir',
         type=str,
-        default='/home/lindo/Develop/nilm/ml/models',
+        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models',
         help='Directory to save the trained models and checkpoints.'
     )
     parser.add_argument(
@@ -144,17 +144,24 @@ def get_arguments():
     return parser.parse_args()
 
 if __name__ == '__main__':
+        
     args = get_arguments()
 
     # The appliance to train on.
     appliance_name = args.appliance_name
-
-    logger = Logger(
-        log_file_name=os.path.join(
+    log_file_name=os.path.join(
             args.save_dir,
             appliance_name,
-            f'{appliance_name}_train_{args.model_arch}.log'
-        ),
+            f'{appliance_name}_train_{args.model_arch}.log')
+    log_directory = os.path.dirname(log_file_name)
+    if not os.path.exists(log_directory):
+        os.makedirs(log_directory)
+    if (not os.path.exists(log_file_name)):
+        with open(log_file_name, "w") as log_file:
+            log_file.write("Log file created.\n")
+    logger = Logger(
+        log_file_name=log_file_name
+        ,
         append=args.resume_training # append rest of training to end of existing log
     )
 
@@ -186,7 +193,7 @@ if __name__ == '__main__':
     model_filepath = os.path.join(args.save_dir, appliance_name)
     checkpoint_filepath = os.path.join(model_filepath, f'checkpoints_{args.model_arch}')
     logger.log(f'Checkpoint file path: {checkpoint_filepath}')
-    savemodel_filepath = os.path.join(model_filepath, f'savemodel_{args.model_arch}')
+    savemodel_filepath = os.path.join(model_filepath, f'savemodel_{args.model_arch}' + ".h5")
     logger.log(f'SaveModel file path: {savemodel_filepath}')
     history_filepath = os.path.join(model_filepath, f'history_{args.model_arch}')
     logger.log(f'Training history file path: {history_filepath}')
