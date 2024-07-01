@@ -27,11 +27,11 @@ def get_arguments():
         help='the name of target appliance')
     parser.add_argument('--datadir',
         type=str,
-        default='./dataset_management/refit',
+        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit',
         help='this is the directory to the test data')
     parser.add_argument('--trained_model_dir',
         type=str,
-        default='./models',
+        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/',
         help='this is the directory to the trained models')
     parser.add_argument('--model_arch',
         type=str,
@@ -40,7 +40,7 @@ def get_arguments():
     parser.add_argument(
         '--save_dir',
         type=str,
-        default='/home/lindo/Develop/nilm/ml/models',
+        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models',
         help='directory to save test results')
     parser.add_argument('--plot', action='store_true',
         help='if set, plot the predicted appliance against ground truth')
@@ -52,7 +52,7 @@ def get_arguments():
         type=int,
         default=1024,
         help='sets test batch size')
-    parser.set_defaults(plot=False)
+    parser.set_defaults(plot=True)
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
     # Load best saved trained model for appliance.
     model_file_path = os.path.join(
-        args.trained_model_dir, appliance_name, f'savemodel_{args.model_arch}')
+        args.trained_model_dir, appliance_name, f'savemodel_{args.model_arch}' + ".h5")
     logger.log(f'Loading saved model from {model_file_path}.')
     model = tf.keras.models.load_model(model_file_path, compile=False)
 
@@ -248,4 +248,4 @@ if __name__ == '__main__':
         ax1.set_ylabel('W')
         ax1.legend(['aggregate', 'ground truth', 'prediction'])
         plt.show()
-        plt.close()
+    print("hallo")

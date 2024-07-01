@@ -1,41 +1,10 @@
-2024-06-22 23:51:52,976 [INFO ]  *** Training model from scratch ***
-2024-06-22 23:51:52,976 [INFO ]  Machine name: Huis-MacBook-Pro.local
-2024-06-22 23:51:52,976 [INFO ]  Arguments: 
-2024-06-22 23:51:52,976 [INFO ]  Namespace(appliance_name='kettle', model_arch='cnn', datadir='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit', save_dir='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models', batchsize=512, n_epoch=50, crop_train_dataset=None, crop_val_dataset=None, do_not_use_distributed_training=False, resume_training=False, plot_display=False)
-2024-06-22 23:51:52,976 [INFO ]  Window length: 599
-2024-06-22 23:51:52,976 [INFO ]  Training dataset: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit/kettle/kettle_training_.csv
-2024-06-22 23:51:52,977 [INFO ]  Validation dataset: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit/kettle/kettle_validation_H5.csv
-2024-06-22 23:51:52,977 [INFO ]  Checkpoint file path: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/checkpoints_cnn
-2024-06-22 23:51:52,977 [INFO ]  SaveModel file path: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/savemodel_cnn.h5
-2024-06-22 23:51:52,978 [INFO ]  Training history file path: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/history_cnn
-2024-06-22 23:52:09,846 [INFO ]  There are 60.429M training samples.
-2024-06-22 23:52:09,846 [INFO ]  There are 7.431M validation samples.
-2024-06-22 23:52:09,846 [INFO ]  Normalized on power threshold: 0.4838709677419355
-2024-06-22 23:52:09,846 [INFO ]  L1 loss multiplier: 1.0
-2024-06-22 23:52:10,522 [INFO ]  Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
-2024-06-22 23:52:10,523 [INFO ]  Number of replicas: 1.
-2024-06-22 23:52:10,523 [INFO ]  Global batch size: 512.
-2024-06-22 23:52:13,900 [INFO ]  Learning rate: 7.071068102959543e-05
-2024-06-22 23:52:18,270 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,274 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,276 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,297 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,312 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,795 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,798 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,801 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:18,803 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-22 23:52:19,105 [INFO ]  Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
-2024-06-23 10:03:11,424 [INFO ]  Running test loop after epoch: 1.
-2024-06-23 10:16:15,669 [INFO ]  Current val loss of 0.1827 < than val loss of inf, saving model to /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/savemodel_cnn.h5.h5
-2024-06-23 10:16:15,670 [WARNI]  Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
-2024-06-23 10:16:15,832 [INFO ]  epoch: 1 loss: 0.3393 mse: 0.008021 mae: 0.04586 val_loss: 0.1827 val_mse: 0.01987 val_mae: 0.09623
-2024-06-23 10:16:17,290 [INFO ]  Reshuffling training dataset.
-2024-06-23 21:59:20,432 [INFO ]  Running test loop after epoch: 2.
-2024-06-23 22:12:44,446 [INFO ]  epoch: 2 loss: 0.2473 mse: 0.006867 mae: 0.04073 val_loss: 0.2098 val_mse: 0.01557 val_mae: 0.07098
-2024-06-23 22:12:47,174 [INFO ]  Reshuffling training dataset.
-2024-06-24 08:35:39,699 [INFO ]  Running test loop after epoch: 3.
-2024-06-24 08:49:35,031 [INFO ]  Current val loss of 0.176 < than val loss of 0.1827, saving model to /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/savemodel_cnn.h5.h5
-2024-06-24 08:49:35,034 [WARNI]  Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
-2024-06-24 08:49:35,395 [INFO ]  epoch: 3 loss: 0.2013 mse: 0.00539 mae: 0.03056 val_loss: 0.176 val_mse: 0.01086 val_mae: 0.05294
-2024-06-24 08:49:41,495 [INFO ]  Reshuffling training dataset.
+2024-07-01 11:24:51,813 [INFO ]  *** Training model from scratch ***
+2024-07-01 11:24:51,814 [INFO ]  Machine name: Huis-MacBook-Pro.local
+2024-07-01 11:24:51,814 [INFO ]  Arguments: 
+2024-07-01 11:24:51,814 [INFO ]  Namespace(appliance_name='kettle', model_arch='cnn', datadir='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit', save_dir='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models', batchsize=512, n_epoch=50, crop_train_dataset=None, crop_val_dataset=None, do_not_use_distributed_training=True, resume_training=False, plot_display=False)
+2024-07-01 11:24:51,815 [INFO ]  Window length: 599
+2024-07-01 11:24:58,388 [INFO ]  Training dataset: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit/kettle/kettle_training_.csv
+2024-07-01 11:25:23,247 [INFO ]  Validation dataset: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit/kettle/kettle_validation_H5.csv
+2024-07-01 11:25:31,681 [INFO ]  Checkpoint file path: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/checkpoints_cnn
+2024-07-01 11:25:33,840 [INFO ]  SaveModel file path: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/savemodel_cnn.h5
+2024-07-01 11:25:36,762 [INFO ]  Training history file path: /Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/kettle/history_cnn

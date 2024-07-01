@@ -6,3 +6,6 @@ ml/__pycache__/*
 ml/nilm_datasets/*
 ml/models/kettle/checkpoints_cnn/*
 ml/models_old/*
+ml/models/*
+ml/dataset_management/refit/__pycache__/*
+ml/models/kettle/*

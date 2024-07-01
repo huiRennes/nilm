@@ -36,11 +36,11 @@ params_appliance = {
         # Appliance considered inactive below this power draw (W).
         # From Zhenrui Yue, et. al., "BERT4NILM: A Bidirectional Transformer Model
         # for Non-Intrusive Load Monitoring".
-        'on_power_threshold': 1500.0, # was 2000 but too high for kettle in my house
+        'on_power_threshold': 2000.0, # was 2000 but too high for kettle in my house
         # Appliance max power draw (W).
         # From Zhenrui Yue, et. al., "BERT4NILM: A Bidirectional Transformer Model
         # for Non-Intrusive Load Monitoring".
-        'max_on_power': 3100.0,#3998.0,
+        'max_on_power': 3998.0,
         # If appliance power draw exceeds 'on_power_threshold' for at least this
         # value, it will be be considered to be active ('on' status) (s).
         # From Zhenrui Yue, et. al., "BERT4NILM: A Bidirectional Transformer Model
@@ -56,13 +56,13 @@ params_appliance = {
         # Training aggregate dataset standard deviation (W).
         'train_agg_std': 783.0367822932175,
         # Training appliance dataset mean (W).
-        'train_app_mean': 16.137261776311778,
+        'train_app_mean': 1301.776887228825,
         # Training appliance dataset standard deviation (W).
-        'train_app_std': 196.89790951996966,
+        'train_app_std': 1205.7468559277781,
         # Test appliance dataset mean (W).
-        'test_app_mean': 23.155018918550294,
+        'test_app_mean': 2253.1848237470513,
         # Test aggregate dataset mean (W)
-        'test_agg_mean': 465.10226795866976,
+        'test_agg_mean': 1015.0215462722791,
         # Appliance dataset alternative standardization mean (W).
         # From Michele D’Incecco, et. al., "Transfer Learning for
         # Non-Intrusive Load Monitoring"

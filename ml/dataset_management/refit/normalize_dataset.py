@@ -36,8 +36,18 @@ def get_zscore(value, values):
     z_score = (value - m)/s
     return np.abs(z_score)
 
+def mean_without_zeros(numbers):
+    # Filter out zeros
+    filtered_numbers = [num for num in numbers if num != 0]
+    
+    # Compute the mean of the remaining values
+    if len(filtered_numbers) == 0:
+        return 0  # Return 0 if the list contains only zeros
+    mean_value = sum(filtered_numbers) / len(filtered_numbers)
+    return mean_value
+
 if __name__ == '__main__':
-    default_appliance = 'washingmachine'
+    default_appliance = 'kettle'
     default_dataset_dir = '/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit/'
 
     parser = argparse.ArgumentParser(
@@ -68,8 +78,8 @@ if __name__ == '__main__':
     train_file_name = os.path.join(path, f'{appliance}_training_.csv')
     try:
         df = load(train_file_name)
-        aggregate_power = df.loc[:, 'aggregate']
-        appliance_power = df.loc[:, appliance]
+        aggregate_power = df.loc[df['aggregate'] != 0, 'aggregate']
+        appliance_power = df.loc[df[appliance] != 0, appliance] 
 
         train_agg_mean = aggregate_power.mean()
         train_agg_std = aggregate_power.std()
@@ -91,10 +101,30 @@ if __name__ == '__main__':
 
     # Standardize (or normalize) each dataset and add status.
     for _, file_name in enumerate(os.listdir(path)):
+        if(not appliance in file_name):
+            continue
         file_path = os.path.join(path, file_name)
         
         df = load(file_path)
+        
+        aggregate_power = df.loc[df['aggregate'] != 0, 'aggregate']
+        appliance_power = df.loc[df[appliance] != 0, appliance] 
 
+        agg_mean = aggregate_power.mean()
+        agg_std = aggregate_power.std()
+        print(f'aggregate mean = {agg_mean}, std = {agg_std}')
+
+        app_mean = appliance_power.mean()
+        app_std = appliance_power.std()
+        print(f'appliance mean = {app_mean}, std = {app_std}')
+
+        app_min = appliance_power.min()
+        app_max = appliance_power.max()
+        print(f'appliance min = {app_min}, max = {app_max}')
+        
+        df['aggregate'] = df['aggregate'].astype('float64')
+        df[appliance] = df[appliance].astype('float64')
+        
         print(f'\n*** Working on {file_name} ***')
         print('Raw dataset statistics:')
         print(df.loc[:, 'aggregate'].describe())

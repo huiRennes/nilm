@@ -138,7 +138,7 @@ def get_arguments():
         action='store_true',
         help='Display loss and accuracy curves.'
     )
-    parser.set_defaults(do_not_use_distributed_training=False)
+    parser.set_defaults(do_not_use_distributed_training=True)
     parser.set_defaults(resume_training=False)
     parser.set_defaults(plot_display=False)
     return parser.parse_args()
