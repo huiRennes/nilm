@@ -2,8 +2,6 @@
 Create new train, test and validation datasets from REFIT data.
 
 No normalization is performed, post-process with normalize_dataset.py.
-
-Copyright (c) 2023 Lindo St. Angel
 """
 
 import time
@@ -13,23 +11,12 @@ import argparse
 
 import pandas as pd
 #import matplotlib.pyplot as plt
+current_dir = os.path.dirname(__file__)
 
-DATA_DIRECTORY = '/home/lindo/Develop/nilm-datasets/REFIT/CLEAN_REFIT_081116/'
-SAVE_DIRECTORY = '/home/lindo/Develop/nilm/ml/dataset_management/refit'
+DATA_DIRECTORY = os.path.join(current_dir, 'raw_data')
+SAVE_DIRECTORY = os.path.join(current_dir, '../../processed_data/refit')
 
-DATA_DIRECTORY = '/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/nilm_datasets/refit/'
-SAVE_DIRECTORY = '/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit'
-
-def get_arguments():
-    parser = argparse.ArgumentParser(description='create new datasets for training')
-    parser.add_argument('--data_dir', type=str, default=DATA_DIRECTORY,
-                          help='The directory containing the CLEAN REFIT data')
-    parser.add_argument('--appliance_name', type=str, default='kettle',
-                          help='which appliance you want to train: kettle,\
-                          microwave,fridge,dishwasher,washingmachine')
-    parser.add_argument('--save_path', type=str, default=SAVE_DIRECTORY,
-                          help='The directory to store the training data')
-    return parser.parse_args()
+APPLIANCE_NAME = 'washingmachine'
 
 params_appliance = {
     'kettle': {
@@ -39,14 +26,14 @@ params_appliance = {
         'mean': 700,
         'std': 1000,
         's2s_length': 128,
-        'houses': [2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 19],
-        'channels': [8, 9, 9, 8, 7, 9, 9, 7, 4, 9, 5],
-        'test_house': [11], #channel 7
-        'test_house_channels' : [7],
+        'houses': [2, 3, 4, 5, 6, 7, 8, 9, 12, 13],
+        'channels': [8, 9, 9, 8, 7, 9, 9, 7, 4, 9],
+        'test_house': [19], #channel 7
+        'test_house_channels' : [5],
         'validation_house': [20], # channel 9
         'validation_house_channels' : [9],
         'test_on_train_house': [15], #channel 8
-        'test_on_train_house_channels' : [8],
+        'test_on_train_house_channels' : [8]
     },
     'microwave': {
         'windowlength': 599,
@@ -55,11 +42,14 @@ params_appliance = {
         'mean': 500,
         'std': 800,
         's2s_length': 128,
-        'houses': [4, 10, 12, 17, 19],
-        'channels': [8, 8, 3, 7, 4],
-        'test_house': 4,
-        'validation_house': 17,
-        'test_on_train_house': 10,
+        'houses':   [2, 3, 5, 6, 8, 9, 12, 13, 15, 18, 19, 20],
+        'channels': [5, 8, 7, 6, 8, 6,  3,  8,  7,  9,  4,  8],
+        'test_house': [4],
+        'test_house_channels' : [8],
+        'validation_house': [17],
+        'validation_house_channels' : [7],
+        'test_on_train_house': [10],
+        'test_on_train_house_channels' : [8]
     },
     'fridge': {
         'windowlength': 599,
@@ -68,11 +58,14 @@ params_appliance = {
         'mean': 200,
         'std': 400,
         's2s_length': 512,
-        'houses': [2, 5, 9, 12, 15],
-        'channels': [1, 1, 1,  1, 1],
-        'test_house': 15,
-        'validation_house': 12,
-        'test_on_train_house': 5,
+        'houses':   [1, 2, 3,  7, 9, 17, 20],
+        'channels': [1, 1, 2,  1, 1,  2, 1 ],
+        'test_house': [15],
+        'test_house_channels' : [1],
+        'validation_house': [12],
+        'validation_house_channels' : [1],
+        'test_on_train_house': [5],
+        'test_on_train_house_channels' : [1]
     },
     'dishwasher': {
         'windowlength': 599,
@@ -81,30 +74,36 @@ params_appliance = {
         'mean': 700,
         'std': 1000,
         's2s_length': 1536,
-        'houses': [5, 7, 9, 13, 16, 18, 20],
-        'channels': [4, 6, 4, 4, 6, 6, 5],
-        'test_house': 20,
-        'validation_house': 18,
-        'test_on_train_house': 13,
+        'houses':   [1, 2, 3, 5, 6, 7, 9, 10, 15, 16],
+        'channels': [6, 3, 5, 4, 3, 6, 4, 6,   4,   6],
+        'test_house': [20],
+        'test_house_channels' : [5],
+        'validation_house': [18],
+        'validation_house_channels' : [6],
+        'test_on_train_house': [13],
+        'test_on_train_house_channels' : [4]
     },
     'washingmachine': {
         'windowlength': 599,
-        'on_power_threshold': 20,
+        'on_power_threshold': 220,
         'max_on_power': 3999,
         'mean': 400,
         'std': 700,
         's2s_length': 2000,
-        'houses': [2, 5, 7, 8, 9, 15, 16, 17, 18],
-        'channels': [2, 3, 5, 4, 3, 3, 5, 4, 5],
-        'test_house': 8,
-        'validation_house': 18,
-        'test_on_train_house': 5,
+        'houses':   [1, 2, 3, 6, 7, 9, 10, 13, 15, 16, 17, 19, 20],
+        'channels': [5, 2, 6, 2, 5, 3, 5,   3,  3, 5,   4,  2, 4],
+        'test_house': [8],
+        'test_house_channels' : [4],
+        'validation_house': [18],
+        'validation_house_channels' : [5],
+        'test_on_train_house': [5],
+        'test_on_train_house_channels' : [3]
     }
 }
 
 def load(path, building, appliance, channel):
     # load csv
-    file_name = path + 'House_' + str(building) + '.csv'
+    file_name = os.path.join(path, 'House_' + str(building) + '.csv')
     single_csv = pd.read_csv(file_name,
                              header=0,
                              names=['aggregate', appliance],
@@ -129,15 +128,14 @@ def compute_stats(df) -> dict:
 
 def main():
     start_time = time.time()
-    
-    args = get_arguments()
-    
-    appliance_name = args.appliance_name
+    appliance_name = APPLIANCE_NAME
     print(appliance_name)
     
-    path = args.data_dir
-    save_path = os.path.join(args.save_path, args.appliance_name)
-    if not os.path.exists(save_path): os.makedirs(save_path)
+    path = DATA_DIRECTORY
+
+    save_path = os.path.join(SAVE_DIRECTORY, APPLIANCE_NAME)
+    if not os.path.exists(save_path): 
+        os.makedirs(save_path)
     print(f'data path: {path}')
     print(f'save path: {save_path}')
     

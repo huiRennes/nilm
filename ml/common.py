@@ -17,7 +17,7 @@ ALT_AGGREGATE_STD = 814.0   # in Watts
 
 # If True the alternative standardization parameters will be used
 # for scaling the datasets.
-USE_ALT_STANDARDIZATION = True
+USE_ALT_STANDARDIZATION = False
 
 # If True the appliance dataset will be normalized to [0, max_on_power]
 # else the appliance dataset will be z-score standardized.
@@ -36,11 +36,13 @@ params_appliance = {
         # Appliance considered inactive below this power draw (W).
         # From Zhenrui Yue, et. al., "BERT4NILM: A Bidirectional Transformer Model
         # for Non-Intrusive Load Monitoring".
-        'on_power_threshold': 2000.0, # was 2000 but too high for kettle in my house
+        'on_power_threshold': 2000.0,
         # Appliance max power draw (W).
         # From Zhenrui Yue, et. al., "BERT4NILM: A Bidirectional Transformer Model
         # for Non-Intrusive Load Monitoring".
-        'max_on_power': 3998.0,
+        'train_max_on_power': 3968,
+        'test_max_on_power': 3584,
+        'validation_max_on_power': 3968,
         # If appliance power draw exceeds 'on_power_threshold' for at least this
         # value, it will be be considered to be active ('on' status) (s).
         # From Zhenrui Yue, et. al., "BERT4NILM: A Bidirectional Transformer Model
@@ -52,17 +54,23 @@ params_appliance = {
         # for Non-Intrusive Load Monitoring".
         'min_off_duration': 0.0,
         # Training aggregate dataset mean (W).
-        'train_agg_mean': 501.32453633286167,
+        'train_agg_mean': 564.0304687889887,
         # Training aggregate dataset standard deviation (W).
-        'train_agg_std': 783.0367822932175,
+        'train_agg_std': 835.2925009671787,
         # Training appliance dataset mean (W).
-        'train_app_mean': 1301.776887228825,
+        'train_app_mean': 2055.4838367293455,
         # Training appliance dataset standard deviation (W).
-        'train_app_std': 1205.7468559277781,
-        # Test appliance dataset mean (W).
-        'test_app_mean': 2253.1848237470513,
+        'train_app_std': 970.0731362946979,
         # Test aggregate dataset mean (W)
-        'test_agg_mean': 1015.0215462722791,
+        'test_agg_mean': 291.31571761132903,
+        'test_agg_std': 380.57765719102224,
+        # Test appliance dataset mean (W).
+        'test_app_mean': 2447.0973363929475,
+        'test_app_std': 1101.8827204224647,
+        'validation_agg_mean': 377.9968796216541,
+        'validation_agg_std': 469.7123584139814,
+        'validation_app_mean': 2343.4051142621147,
+        'validation_app_std': 1004.7597006475886,
         # Appliance dataset alternative standardization mean (W).
         # From Michele D’Incecco, et. al., "Transfer Learning for
         # Non-Intrusive Load Monitoring"
@@ -79,15 +87,23 @@ params_appliance = {
     'microwave': {
         'window_length': 599,
         'on_power_threshold': 200.0,
-        'max_on_power': 3000.0,
+        'train_max_on_power': 3778,
+        'test_max_on_power': 3592,
+        'validation_max_on_power': 2050,
         'min_on_duration': 12.0,
         'min_off_duration': 30.0,
-        'train_agg_mean': 495.0447502551665,
-        'train_agg_std': 704.1066664964247,
-        'train_app_mean': 3.4617193220425304,
-        'train_app_std': 64.22826568216946,
-        'test_app_mean': 9.577146165430394,
-        'test_agg_mean': 381.2162070293207,
+        'train_agg_mean': 506.7278030164707,
+        'train_agg_std': 766.9915084535828,
+        'train_app_mean': 510.03960527944633,
+        'train_app_std': 742.30648118481,
+        'validation_agg_mean': 405.7487526594589,
+        'validation_agg_std': 784.3991706115174,
+        'validation_app_mean': 1233.5959764845477,
+        'validation_app_std': 371.4518403669119,
+        'test_agg_mean': 381.21947760009573,
+        'test_agg_std': 428.3196100268874,
+        'test_app_mean': 761.1351981014673,
+        'test_app_std': 524.6032031645268,
         'alt_app_mean': 500.0,
         'alt_app_std': 800.0,
         'c0': 1.0
@@ -95,47 +111,71 @@ params_appliance = {
     'fridge': {
         'window_length': 599,
         'on_power_threshold': 50.0,
-        'max_on_power': 400.0,
+        'train_max_on_power': 3584,
+        'test_max_on_power': 2048,
+        'validation_max_on_power': 3968,
         'min_on_duration': 60.0,
         'min_off_duration': 12.0,
-        'train_agg_mean': 605.4483277115743,
-        'train_agg_std': 952.1533235759814,
-        'train_app_mean': 48.55206460642049,
-        'train_app_std': 62.114631485397986,
-        'test_app_mean': 24.40792692094185,
-        'test_agg_mean': 254.83458540217833,
+        'train_agg_mean': 523.7190021344519,
+        'train_agg_std': 855.2135152940822,
+        'train_app_mean': 87.81715351268862,
+        'train_app_std': 46.963790598276695,
+        'test_app_mean': 77.61295826073543,
+        'test_app_std': 26.08558479292136,
+        'test_agg_mean': 254.83499472989803,
+        'test_agg_std': 350.9031749257443,
+        'validation_agg_mean': 367.2209206733284,
+        'validation_agg_std': 618.0497897911025,
+        'validation_app_mean': 84.61324975067673,
+        'validation_app_std': 36.33300917160002,
         'alt_app_mean': 200.0,
         'alt_app_std': 400.0,
         'c0': 1e-06
     },
     'dishwasher': {
         'window_length': 599,
-        'on_power_threshold': 10.0,
-        'max_on_power': 2500.0,
+        'on_power_threshold': 700,
+        'train_max_on_power': 3840.0,
+        'test_max_on_power': 3588,
+        'validation_max_on_power': 3488,
         'min_on_duration': 1800.0,
         'min_off_duration': 1800.0,
-        'train_agg_mean': 606.3228537145152,
-        'train_agg_std': 833.611776395652,
-        'train_app_mean': 46.040618889481905,
-        'train_app_std': 305.87980576285474,
-        'test_app_mean': 11.299554135013219,
-        'test_agg_mean': 377.9968064884045,
+        'train_agg_mean': 573.4013850661521,
+        'train_agg_std': 806.8727969742708,
+        'train_app_mean': 882.8289567908794,
+        'train_app_std': 973.6000844761928,
+        'test_app_mean': 769.6329747872509,
+        'test_app_std': 1024.2289464497765,
+        'test_agg_mean': 377.99695178755263,
+        'test_agg_std': 469.7123751996451,
+        'validation_agg_mean': 451.7358885032802,
+        'validation_agg_std': 501.96875450389484,
+        'validation_app_mean': 1498.1607203092972,
+        'validation_app_std': 1287.7188158444567,
         'alt_app_mean': 700.0,
         'alt_app_std': 1000.0,
         'c0': 1.0
     },
     'washingmachine': {
         'window_length': 599,
-        'on_power_threshold': 10.0,
-        'max_on_power': 2500.0,
+        'on_power_threshold': 400,
+        'train_max_on_power': 3968,
+        'test_max_on_power': 3972,
+        'validation_max_on_power': 2475,
         'min_on_duration': 1800.0,
         'min_off_duration': 160.0,
-        'train_agg_mean': 517.5859340919116,
-        'train_agg_std': 827.1565574135092,
-        'train_app_mean': 22.22078550102201,
-        'train_app_std': 189.70389890256996,
-        'test_app_mean': 29.433812118685246,
-        'test_agg_mean': 685.6151694157477,
+        'train_agg_mean': 507.3718738840091,
+        'train_agg_std': 762.3650210515159,
+        'train_app_mean': 502.2916058612964,
+        'train_app_std': 756.6312247017426,
+        'test_app_mean': 976.6399670010271,
+        'test_app_std': 1033.5390027476958,
+        'test_agg_mean': 685.6207706598715,
+        'test_agg_std': 1163.2520493471122,
+        'validation_agg_mean': 451.7358885032802,
+        'validation_agg_std': 501.96875450389484,
+        'validation_app_mean': 467.3980720105909,
+        'validation_app_std': 763.6700722422596,
         'alt_app_mean': 400.0,
         'alt_app_std': 700.0,
         'c0': 1e-02
