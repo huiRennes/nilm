@@ -9,3 +9,7 @@ ml/models_old/*
 ml/models/*
 ml/dataset_management/refit/__pycache__/*
 ml/models/kettle/*
+/.idea/*
+/ml/models/kettle/history_cnn.npy
+/ml/models/kettle/savemodel_cnn.h5
+/ml/models/kettle/kettle_train_cnn.log

@@ -37,7 +37,7 @@ class DistributedTrainer():
     _BASE_LR = 1.0e-4
     _LR_BY_BATCH_SIZE = {
         256: _BASE_LR / tf.sqrt(4.0),
-        512: _BASE_LR / tf.sqrt(2.0),
+        512: _BASE_LR, #/ tf.sqrt(2.0),
         1024: _BASE_LR,
         2048: _BASE_LR * tf.sqrt(2.0),
         4096: _BASE_LR * tf.sqrt(4.0)

@@ -27,11 +27,11 @@ def get_arguments():
         help='the name of target appliance')
     parser.add_argument('--datadir',
         type=str,
-        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit',
+        default='C:/Users/Admin/dvp/nilm/ml/dataset_management/refit',
         help='this is the directory to the test data')
     parser.add_argument('--trained_model_dir',
         type=str,
-        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models/',
+        default='C:/Users/Admin/dvp/nilm/ml/models/',
         help='this is the directory to the trained models')
     parser.add_argument('--model_arch',
         type=str,
@@ -40,7 +40,7 @@ def get_arguments():
     parser.add_argument(
         '--save_dir',
         type=str,
-        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models',
+        default='C:/Users/Admin/dvp/nilm/ml/models',
         help='directory to save test results')
     parser.add_argument('--plot', action='store_true',
         help='if set, plot the predicted appliance against ground truth')
@@ -249,3 +249,4 @@ if __name__ == '__main__':
         ax1.legend(['aggregate', 'ground truth', 'prediction'])
         plt.show()
     print("hallo")
+    print('hallo2')

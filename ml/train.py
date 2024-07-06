@@ -90,13 +90,13 @@ def get_arguments():
     parser.add_argument(
         '--datadir',
         type=str,
-        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/dataset_management/refit',
+        default='C:/Users/Admin/dvp/nilm/ml/dataset_management/refit',
         help='Directory of the training samples.'
     )
     parser.add_argument(
         '--save_dir',
         type=str,
-        default='/Users/hui/Local_documents/co_found/dvp/NILM_model/nilm/ml/models',
+        default='C:/Users/Admin/dvp/nilm/ml/models',
         help='Directory to save the trained models and checkpoints.'
     )
     parser.add_argument(
